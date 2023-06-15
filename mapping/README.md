@@ -15,10 +15,14 @@ Read the following article (10 minute read):
 The article is also saved as a PDF.
 
 In 1-2 sentences, answer each of the following questions:
-- What is a grid map?
-- What is an occupancy grid map?
-- What coding/mathematical structure can you use to define an occupancy grid map?
-- What could be a weakness of the occupancy grid map approach?
+- What is a grid map?  
+  `From simulation point of view it is a 2x2 matrix which represents the factory floor.`
+- What is an occupancy grid map?  
+  `It is one step more in grid map where certain cells of the matrix are covered by some obstacles.`
+- What coding/mathematical structure can you use to define an occupancy grid map?  
+  `A 2x2 Matrix or also called as 2d array where obstacles denoted by some numeric value like 100 and free space by 0.`
+- What could be a weakness of the occupancy grid map approach?  
+  `Mapping grid into the real world. We need to assume some metric for resolution or mapping.`
 
 ### Programming question: random environment generator
 Generate and plot a few random environments according the following requirements:
