@@ -15,9 +15,12 @@ Read the "Fundamental Operation" part of the Wikipedia article on PID control (1
 - [https://en.wikipedia.org/wiki/PID_controller](https://en.wikipedia.org/wiki/PID_controller)
 
 In 1-2 sentences, answer each of the following questions:
-- What is the error signal (i.e. the error as a function of time)?
-- What are the three terms of PID control?
-- What is the control input equation for a P controller (pure proportional controller) in terms of the error signal e(t)?
+- What is the error signal (i.e. the error as a function of time)?   
+`It is the difference between the measured set point and the process variable. So we need to tune our controller such that the error goes near to zero.`
+- What are the three terms of PID control?   
+`P: Proportional, I: Integral: D: Derivative. Proportional will provides the magnitude of the error. Integral sum up all the error and helps in accumulating the past errors. Derivative acts as a resistance and minimize the error residual.`
+- What is the control input equation for a P controller (pure proportional controller) in terms of the error signal e(t)?    
+`Proportional Gain = Po + Kp * ( change in error )`  
 
 ### Programming question: P-controlled robot
 We will control a robot using a P controller. The robot has two states, one for each spatial dimension (i.e. the two states represent the robot's position in a flat plane). 
