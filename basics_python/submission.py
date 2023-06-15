@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import math
 
 
 class Solution:
@@ -13,6 +14,26 @@ class Solution:
         """
         Add your code here 
         """
+        _min = None
+        _max = None
+        
+        for ele in ls:
+          if _min is None or _min > ele:
+            _min = ele
+          if _max is None or _max < ele:
+            _max = ele
+        
+        if _min == _max or _min+1 == _max:
+          return(0.0)
+        
+        
+        _sum = 0
+        _cnt = 0
+        for ele in ls:
+          if ele != _min and ele != _max:
+            _sum = _sum + ele
+            _cnt = _cnt + 1
+        return(_sum/_cnt)
 
     def digits_prod_minus_sum(self, n: int) -> int:
         """
@@ -24,6 +45,10 @@ class Solution:
         """
         Add your code here 
         """
+        factorial = math.factorial(n)
+        sum_of_natural_numbers = (n * (n + 1)) // 2
+        
+        return(factorial - sum_of_natural_numbers)
 
     def check_pts_on_line(self, coordinates: list[list[int]]) -> bool:
         """
@@ -37,3 +62,22 @@ class Solution:
         """
         Add your code here
         """
+        x1, y1 = coordinates[0]
+        x2, y2 = coordinates[1]
+        
+        #Calculating the slope
+        m = (y2 - y1) / (x2 - x1)
+        
+        #Calculating the intercept by back substitution
+        c = y2 - m*x2
+        
+        #If there are only two or less than two points they always form the line 
+        if len(coordinates)<3:
+          return True
+        
+        #Iterating over all the points and verifying
+        for ele in coordinates:
+          if ele[1] != m*ele[0]+c:
+            return False
+
+        return True
