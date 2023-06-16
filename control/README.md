@@ -55,20 +55,31 @@ For more information about this noise, check out the following two resources:
 
 The default noise is set to zero. That is indicated by the `0.00` coefficient of `w_std_dev_t`.
 We start by analyzing the system with no noise; specifically, we analyze the two figures that are plotted.
-- What does the "Robot Trajectory" figure represent?
-- Does the presented trajectory make sense?
-- What do the two plots of the second figure ("Dimension 1 trajectory" and "Dimension 2 trajectory") represent?
-- Is the controller working?
-- Try changing the gain `kp` from `[0.1, 0.1]` to `[0.5, 0.5]` then to `[0.05, 0.05]`. How does `kp` affect the robot?
+- What does the "Robot Trajectory" figure represent?  
+`It is indicating the path that robot has taken to reach from starting of (1,2) to (5,5)`
+- Does the presented trajectory make sense?  
+`Yes, it is the shortest possible path for robot to reach from initial to final destination.`
+- What do the two plots of the second figure ("Dimension 1 trajectory" and "Dimension 2 trajectory") represent?  
+`The decrease in error rate starting from highest of 5 where robot needs to reach to the position where it reached in terms of initial time of 0t to 100t`
+- Is the controller working?  
+`Yes, it is decreasing the error.`
+- Try changing the gain `kp` from `[0.1, 0.1]` to `[0.5, 0.5]` then to `[0.05, 0.05]`. How does `kp` affect the robot?     
+`When kp is 0.5 it is reaching the desired position faster and error is decreasing at faster rate. It can overshoot or may create the stability issue. When kp is 0.05 then it may takes more time to reach the desired position although the stability increased`
 Setting `kp` back to `[0.1, 0.1]` we will now add noise. 
 Note that when running with noise, you may have to run the code a few times to see how the results may change with every run due to noise.
 (You may want to print out the noise value. That's optional but might help with your analysis)
-- Before changing the noise, what do you expect will happen when noise is added?
-- Increase the `w_std_dev_t` coefficient from `0.00` to `0.03`. What happens to the robot?
-- If we increase the noise value further, what do you expect will happen?
-- Increase the `w_std_dev_t` coefficient to `0.1`. What happens to the robot?
-- If we increase the noise a lot, what do you expect will happen? Will the robot be able to reach the goal?
-- Increase the `w_std_dev_t` coefficient to `1`. What happens to the robot?
+- Before changing the noise, what do you expect will happen when noise is added?  
+`It may take more time to figure out the correct path out of all the noises and more try and error from the controller.`
+- Increase the `w_std_dev_t` coefficient from `0.00` to `0.03`. What happens to the robot?  
+`The path is no more straight line and requires more throughput from the controller to get on the desired trajectory and to reach the destination. `
+- If we increase the noise value further, what do you expect will happen?  
+`More noise will create the path more complex and requires more tunning from the controller to stay on the desired trajectory.`
+- Increase the `w_std_dev_t` coefficient to `0.1`. What happens to the robot?     
+`Noise is increasing and the path is becoming more complex.`
+- If we increase the noise a lot, what do you expect will happen? Will the robot be able to reach the goal?  
+`The path will be more complex, it will take more time but robot will reach the goal.`
+- Increase the `w_std_dev_t` coefficient to `1`. What happens to the robot?   
+`It is waiving off from the desired trajectory and requires tunning of the kp value.`
 
 ## Submission
 Create a folder called `control` and include the following files:

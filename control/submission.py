@@ -11,7 +11,8 @@ def proportional_controller(kp: np.ndarray, e_t: np.ndarray) -> np.ndarray:
     :return: control value (2x1)
     """
     # compute the control signal
-    u_t = ...  # TODO: add your code
+    u_t = kp*e_t  # TODO: add your code
+    print(u_t, "  ", e_t)
     return u_t
 
 
@@ -20,7 +21,7 @@ def main():
     x0 = np.array([5, 5])  # initial position
     x_goal = np.array([1, 2])  # goal position
     w_mean_t = np.zeros([2, ])  # noise mean
-    w_std_dev_t = 0.00 * np.ones([2, ])  # noise standard deviation
+    w_std_dev_t = 0.05 * np.ones([2, ])  # noise standard deviation
     kp = np.array([0.1, 0.1])  # control gains
     dynamics = SingleIntegrator2d(x0=x0)  # dynamics
 
@@ -33,13 +34,13 @@ def main():
 
         x_t = dynamics.x_t  # get current state
         # compute error signal (difference between goal and current value)
-        e_t = ...  # TODO: add your code
+        e_t = x_goal - x_t  # TODO: add your code
         # compute control action using the proportional_controller function
-        u_t = ...  # TODO: add your code
+        u_t = proportional_controller(kp,e_t)  # TODO: add your code
         # use the dynamics class predict method to predict the next state
-        x_next_sim = ...  # TODO: add your code
+        x_next_sim =dynamics.predict(x_t,u_t,w_mean_t)  # TODO: add your code
         # use the dynamics class step method to find the true next state
-        x_next = ...  # TODO: add your code
+        x_next = dynamics.step(u_t,w_t)  # TODO: add your code
 
         # save the predicted/simulated and realized/true next states
         x_sim_history.append(x_next_sim)
